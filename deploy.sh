@@ -7,6 +7,6 @@ for f in k8s/*.yml
 do
 	envsubst < $f > "generated-$(basename $f)"
 done
-gcloud docker -- push asia.gcr.io/${PROJECT_NAME}/sample:$CIRCLE_SHA1
+gcloud docker -- push us.gcr.io/${PROJECT_NAME}/sample:$CIRCLE_SHA1
 kubectl apply -f generated-deployment.yml --record
 kubectl apply -f generated-service.yml
